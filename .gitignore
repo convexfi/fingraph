@@ -1,0 +1,13 @@
+.DS_Store
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc
+*.ipynb_checkpoints/
+*.ps
+experiments/forex/flags/
