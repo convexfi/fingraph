@@ -33,9 +33,12 @@ learn_kcomp_heavytail_graph <- function(X, k = 1, heavy_type = "gaussian", nu = 
   dual_residual <- c()
   # augmented lagrangian vector
   lagrangian <- c()
+  beta_seq <- c()
   if (verbose)
     pb <- progress::progress_bar$new(format = "<:bar> :current/:total  eta: :eta",
                                      total = maxiter, clear = FALSE, width = 80)
+  elapsed_time <- c()
+  start_time <- proc.time()[3]
   for (i in 1:maxiter) {
     # update w
     LstarLw <- Lstar(Lw)
@@ -66,10 +69,15 @@ learn_kcomp_heavytail_graph <- function(X, k = 1, heavy_type = "gaussian", nu = 
     # update y
     R2 <- diag(Lwi) - d
     y <- y + rho * R2
+    # compute primal, dual residuals, & lagrangian
+    primal_lap_residual <- c(primal_lap_residual, norm(R1, "F"))
+    primal_deg_residual <- c(primal_deg_residual, norm(R2, "2"))
+    dual_residual <- c(dual_residual, rho*norm(Lstar(Theta - Thetai), "2"))
+    lagrangian <- c(lagrangian, compute_augmented_lagrangian_kcomp_ht(wi, LstarSq, Thetai, U, Y, y, d, heavy_type, n, p, k, rho, beta, nu))
     # update rho
     if (update_rho) {
       s <- rho * norm(Lstar(Theta - Thetai), "2")
-      r <- norm(R1, "F")
+      r <- norm(R1, "F")# + norm(R2, "2")
       if (r > mu * s)
         rho <- rho * tau
       else if (s > mu * r)
@@ -88,10 +96,12 @@ learn_kcomp_heavytail_graph <- function(X, k = 1, heavy_type = "gaussian", nu = 
           break
         }
       }
+      beta_seq <- c(beta_seq, beta)
     }
     if (verbose)
       pb$tick()
     has_converged <- (norm(Lwi - Lw, 'F') / norm(Lw, 'F') < reltol) && (i > 1)
+    elapsed_time <- c(elapsed_time, proc.time()[3] - start_time)
     if (has_converged)
       break
     w <- wi
@@ -99,6 +109,28 @@ learn_kcomp_heavytail_graph <- function(X, k = 1, heavy_type = "gaussian", nu = 
     Theta <- Thetai
   }
   results <- list(laplacian = L(wi), adjacency = A(wi), theta = Thetai, maxiter = i,
-                  convergence = has_converged)
+                  convergence = has_converged, beta_seq = beta_seq,
+                  primal_lap_residual = primal_lap_residual,
+                  primal_deg_residual = primal_deg_residual,
+                  dual_residual = dual_residual,
+                  lagrangian = lagrangian,
+                  elapsed_time = elapsed_time)
   return(results)
+}
+
+compute_augmented_lagrangian_kcomp_ht <- function(w, LstarSq, Theta, U, Y, y, d, heavy_type, n, p, k, rho, beta, nu) {
+  eig <- eigen(Theta, symmetric = TRUE, only.values = TRUE)$values[1:(p-k)]
+  Lw <- L(w)
+  Dw <- diag(Lw)
+  u_func <- 0
+  if (heavy_type == "student") {
+    for (q in 1:n)
+      u_func <- u_func + (p + nu) * log(1 + n * sum(w * LstarSq[[q]]) / nu)
+  } else if (heavy_type == "gaussian"){
+    for (q in 1:n)
+      u_func <- u_func + sum(n * w * LstarSq[[q]])
+  }
+  u_func <- u_func / n
+  return(u_func - sum(log(eig)) + sum(y * (Dw - d)) + sum(diag(Y %*% (Theta - Lw)))
+         + .5 * rho * (norm(Dw - d, "2")^2 + norm(Lw - Theta, "F")^2) + beta * sum(w * Lstar(crossprod(t(U)))))
 }
