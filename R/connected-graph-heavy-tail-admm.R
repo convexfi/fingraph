@@ -4,8 +4,8 @@ library(spectralGraphTopology)
 learn_regular_heavytail_graph <- function(X,
                                           heavy_type = "gaussian", nu = NULL,
                                           w0 = "naive", d = 1,
-                                          rho = 1, update_rho = TRUE, maxiter = 10000, reltol = 1e-5, verbose = TRUE,
-                                          record_objective = FALSE) {
+                                          rho = 1, update_rho = TRUE, maxiter = 10000, reltol = 1e-5,
+                                          verbose = TRUE) {
   X <- as.matrix(X)
   # number of nodes
   p <- ncol(X)
