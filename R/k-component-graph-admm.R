@@ -1,6 +1,7 @@
 library(spectralGraphTopology)
 
 #' @export
+#' @import spectralGraphTopology
 learn_kcomp_graph <- function(S, k = 1, w0 = "naive", alpha = 0, eps = 0, d = 1,
                               rho = 100, update_rho = FALSE, maxiter = 10000,
                               reltol = 1e-5, verbose = TRUE) {

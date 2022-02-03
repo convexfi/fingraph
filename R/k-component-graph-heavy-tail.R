@@ -1,6 +1,7 @@
 library(spectralGraphTopology)
 
 #' @export
+#' @import spectralGraphTopology
 learn_kcomp_heavytail_graph <- function(X, k = 1, heavy_type = "gaussian", nu = NULL,
                                         w0 = "naive", d = 1, beta = 1e-8, update_beta = TRUE, early_stopping = FALSE,
                                         rho = 1, update_rho = FALSE, maxiter = 10000, reltol = 1e-5, verbose = TRUE,

@@ -1,6 +1,7 @@
 library(spectralGraphTopology)
 
 #' @export
+#' @import spectralGraphTopology
 learn_regular_heavytail_graph <- function(X,
                                           heavy_type = "gaussian", nu = NULL,
                                           w0 = "naive", d = 1,

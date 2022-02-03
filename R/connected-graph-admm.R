@@ -1,6 +1,7 @@
 library(spectralGraphTopology)
 
 #' @export
+#' @import spectralGraphTopology
 learn_connected_graph <- function(S, w0 = "naive", d = 1,
                                   rho = 1, maxiter = 10000, reltol = 1e-5, verbose = TRUE,
                                   record_objective = FALSE) {

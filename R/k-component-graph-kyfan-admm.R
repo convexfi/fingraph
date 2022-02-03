@@ -1,6 +1,7 @@
 library(spectralGraphTopology)
 
 #' @export
+#' @import spectralGraphTopology
 learn_regular_kcomp_kyfan_graph <- function(S, k = 1, w0 = "naive", d = 1,
                                             rho = 100, update_rho = FALSE, beta = 1e-8, update_beta = TRUE,
                                             maxiter = 10000, reltol = 1e-5, early_stopping = FALSE, verbose = TRUE) {
