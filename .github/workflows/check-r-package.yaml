@@ -25,9 +25,6 @@ jobs:
             any::covr
           needs: coverage
 
-      - name: Install dev-version of spectralGraphTopology
-        run: Rscript -e "devtools::install_github('mirca/spectralGraphTopology')"
-
       - name: Test coverage
         run: covr::codecov()
         shell: Rscript {0}

@@ -18,7 +18,9 @@ Imports:
     MASS,
     progress,
     igraph,
-    spectralGraphTopology
+    spectralGraphTopology,
+    mvtnorm,
+    testthat
 RoxygenNote: 7.1.1
 Remotes:
     mirca/spectralGraphTopology
