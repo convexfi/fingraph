@@ -44,7 +44,7 @@ test_that("test learn_regular_heavytail_graph student", {
   Laplacian <- L(w)
   p <- ncol(Laplacian)
   nu <- 4
-  X <- mvtnorm::rmvt(n = p * 1000, delta = rep(0, p), sigma = ((nu-2)/nu) * MASS::ginv(Laplacian), df = nu)
+  X <- mvtnorm::rmvt(n = p * 500, delta = rep(0, p), sigma = ((nu-2)/nu) * MASS::ginv(Laplacian), df = nu)
   res <- learn_regular_heavytail_graph(X, rho = 1, heavy_type = "student", nu = nu)
   laplacian <- res$laplacian
   expect_true(res$convergence)
@@ -53,13 +53,15 @@ test_that("test learn_regular_heavytail_graph student", {
   expect_true(fscore(Laplacian, laplacian, 1e-2) > .9)
 })
 
-test_that("test learn_kcomp_graph", {
+
+test_that("test learn_kcomp_heavytail_graph", {
   w1 <- c(1, 1, 1, 1, 1, 1)/3
   w2 <- c(1, 1, 1, 1, 1, 1)/3
   Laplacian <- block_diag(L(w1), L(w2))
   p <- ncol(Laplacian)
-  S <- cov(MASS::mvrnorm(p * 500, rep(0, p), MASS::ginv(Laplacian)))
-  res <- learn_kcomp_graph(S, d = 1, k = 2, rho = 100)
+  nu <- 4
+  X <- mvtnorm::rmvt(n = p * 500, delta = rep(0, p), sigma = ((nu-2)/nu) * MASS::ginv(Laplacian), df = nu)
+  res <- learn_kcomp_heavytail_graph(X, k = 2, rho = 1e2, heavy_type = "student", nu = nu, reltol = 1e-4)
   laplacian <- res$laplacian
   expect_true(res$convergence)
   expect_true(res$maxiter > 5)
@@ -68,13 +70,13 @@ test_that("test learn_kcomp_graph", {
 })
 
 
-test_that("test learn_regular_kyfan_graph", {
+test_that("test learn_kcomp_heavytail_graph", {
   w1 <- c(1, 1, 1, 1, 1, 1)/3
   w2 <- c(1, 1, 1, 1, 1, 1)/3
   Laplacian <- block_diag(L(w1), L(w2))
   p <- ncol(Laplacian)
-  S <- cov(MASS::mvrnorm(p * 500, rep(0, p), MASS::ginv(Laplacian)))
-  res <- learn_regular_kcomp_kyfan_graph(S, d = 1, k = 2, rho = 100, beta = 100)
+  X <- MASS::mvrnorm(p * 100, rep(0, p), MASS::ginv(Laplacian))
+  res <- learn_kcomp_heavytail_graph(X, k = 2, rho = 100)
   laplacian <- res$laplacian
   expect_true(res$convergence)
   expect_true(res$maxiter > 5)
