@@ -21,9 +21,13 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: any::covr
+          extra-packages: |
+            any::covr
           needs: coverage
 
+      - name: Install dev-version of spectralGraphTopology
+        run: Rscript -e "devtools::install_github('mirca/spectralGraphTopology')"
+
       - name: Test coverage
-        run: devtools::install_github('mirca/spectralGraphTopology') covr::codecov()
+        run: covr::codecov()
         shell: Rscript {0}

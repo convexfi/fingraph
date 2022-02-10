@@ -9,9 +9,13 @@ financial markets.
 Installation
 ------------
 
+**fingraph** depends on the development version of
+**spectralGraphTopology**.
+
 You can install the development version from GitHub:
 
 ``` r
+> devtools::install_github("mirca/spectralGraphTopology")
 > devtools::install_github("mirca/fingraph")
 ```
 

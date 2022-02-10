@@ -4,14 +4,12 @@ Version: 0.1.0
 Description: Learning graphs for financial markets with ADMM-like algorithms.
 Author: Ze Vinicius
 Maintainer: Ze Vinicius <jvmirca@gmail.com>
-URL: https://github.com/mirca/fingraph/,
-     https://mirca.github.io/fingraph,
-     https://www.danielppalomar.com
+URL: https://github.com/mirca/fingraph/
 BugReports: https://github.com/mirca/fingraph/issues
 License: GPL-3 | file LICENSE
 Encoding: UTF-8
 LazyData: true
-Depends:
+Depends: CVXR, spectralGraphTopology, devtools
 LinkingTo:
     Rcpp,
     RcppEigen
@@ -19,7 +17,9 @@ Imports:
     Rcpp,
     MASS,
     progress,
+    igraph,
     spectralGraphTopology
 RoxygenNote: 7.1.1
+Remotes:
+    mirca/spectralGraphTopology
 Suggests:
-    devtools
