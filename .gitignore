@@ -10,4 +10,4 @@
 *.toc
 *.ipynb_checkpoints/
 *.ps
-experiments/forex/flags/
+..Rcheck/
