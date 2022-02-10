@@ -1,4 +1,4 @@
 library(testthat)
-library(dualgraph)
+library(fingraph)
 
-test_check("dualgraph")
+test_check("fingraph")

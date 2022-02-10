@@ -2,10 +2,7 @@ Package: fingraph
 Title: Learning graphs for financial markets
 Version: 0.1.0
 Description: Learning graphs for financial markets with ADMM-like algorithms.
-Authors@R: c(
-  person("Ze", "Vinicius", role = c("cre", "aut"), email = "jvmirca@gmail.com"),
-  person(c("Daniel", "P."), "Palomar", role = "aut", email = "daniel.p.palomar@gmail.com")
-  )
+Author: Ze Vinicius
 Maintainer: Ze Vinicius <jvmirca@gmail.com>
 URL: https://github.com/mirca/fingraph/,
      https://mirca.github.io/fingraph,
@@ -27,9 +24,3 @@ Imports:
 RoxygenNote: 7.1.1
 Suggests:
     patrick
-VignetteBuilder:
-    bookdown,
-    knitr,
-    prettydoc,
-    rmarkdown,
-    R.rsp
