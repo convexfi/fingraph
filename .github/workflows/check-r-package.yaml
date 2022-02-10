@@ -25,5 +25,5 @@ jobs:
           needs: coverage
 
       - name: Test coverage
-        run: covr::codecov()
+        run: devtools::install_github('mirca/spectralGraphTopology') covr::codecov()
         shell: Rscript {0}
