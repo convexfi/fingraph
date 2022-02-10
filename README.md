@@ -3,6 +3,8 @@
 fingraph
 ========
 
+[![codecov](https://codecov.io/gh/mirca/fingraph/branch/main/graph/badge.svg?token=OhreF1p2Yt)](https://codecov.io/gh/mirca/fingraph)
+
 ADMM-like algorithms for learning graphs from data with applications to
 financial markets.
 
