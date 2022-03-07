@@ -5,8 +5,9 @@ fingraph
 
 [![codecov](https://codecov.io/gh/mirca/fingraph/branch/main/graph/badge.svg?token=OhreF1p2Yt)](https://codecov.io/gh/mirca/fingraph)
 
-ADMM-like algorithms for learning graphs from data with applications to
-financial markets.
+This repo contains ADMM implementations to estimate weighted undirected
+graphs (Markov random fields) under Student-t assumptions with
+applications to financial markets.
 
 Installation
 ------------
@@ -68,7 +69,7 @@ V(net)$label.cex = 1
 plot(cfg, net, vertex.label = colnames(crypto_prices),
      layout = la_kcomp,
      vertex.size = 4.5,
-     col = "black", 
+     col = "black",
      edge.color = c("#686de0"),
      vertex.label.family = "Helvetica",
      vertex.label.color = "black",
