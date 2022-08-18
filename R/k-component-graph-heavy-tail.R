@@ -1,10 +1,44 @@
 library(spectralGraphTopology)
 
+#' @title Laplacian matrix of a k-component graph with heavy-tailed data
+#'
+#' Computes the Laplacian matrix of a graph on the basis of an observed data matrix,
+#' where we assume the data to be Student-t distributed.
+#'
+#' @param X an n x p data matrix, where n is the number of observations and p is
+#'        the number of nodes in the graph.
+#' @param k the number of components of the graph.
+#' @param heavy_type a string which selects the statistical distribution of the data    .
+#'        Valid values are "gaussian" or "student".
+#' @param nu the degrees of freedom of the Student-t distribution.
+#'        Must be a real number greater than 2.
+#' @param w0 initial vector of graph weights. Either a vector of length p(p-1)/2 or
+#'        a string indicating the method to compute an initial value.
+#' @param beta hyperparameter that controls the regularization to obtain a
+#'        k-component graph
+#' @param update_beta whether to update beta during the optimization.
+#' @param d the nodes' degrees. Either a vector or a single value.
+#' @param rho ADMM hyperparameter.
+#' @param update_rho whether or not to update rho during the optimization.
+#' @param maxiter maximum number of iterations.
+#' @param reltol relative tolerance as a convergence criteria.
+#' @param verbose whether or not to show a progress bar during the iterations.
 #' @export
 #' @import spectralGraphTopology
-learn_kcomp_heavytail_graph <- function(X, k = 1, heavy_type = "gaussian", nu = NULL,
-                                        w0 = "naive", d = 1, beta = 1e-8, update_beta = TRUE, early_stopping = FALSE,
-                                        rho = 1, update_rho = FALSE, maxiter = 10000, reltol = 1e-5, verbose = TRUE,
+learn_kcomp_heavytail_graph <- function(X,
+                                        k = 1,
+                                        heavy_type = "gaussian",
+                                        nu = NULL,
+                                        w0 = "naive",
+                                        d = 1,
+                                        beta = 1e-8,
+                                        update_beta = TRUE,
+                                        early_stopping = FALSE,
+                                        rho = 1,
+                                        update_rho = FALSE,
+                                        maxiter = 10000,
+                                        reltol = 1e-5,
+                                        verbose = TRUE,
                                         record_objective = FALSE) {
   X <- scale(as.matrix(X))
   # number of nodes
