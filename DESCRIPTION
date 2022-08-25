@@ -9,7 +9,7 @@ BugReports: https://github.com/mirca/fingraph/issues
 License: GPL-3 | file LICENSE
 Encoding: UTF-8
 LazyData: true
-Depends: CVXR, spectralGraphTopology, devtools
+Depends: spectralGraphTopology, devtools
 LinkingTo:
     Rcpp,
     RcppEigen
