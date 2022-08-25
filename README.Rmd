@@ -1,4 +1,9 @@
-<!-- README.md is generated from README.Rmd. Please edit that file -->
+---
+title: "fingraph README"
+output:
+  html_document:
+    keep_md: true
+---
 
 ```{r, echo = FALSE}
 library(knitr)
