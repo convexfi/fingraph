@@ -80,6 +80,64 @@ plot(cfg, net, vertex.label = colnames(crypto_prices),
      edge.curved = 0.1)
 ```
 
+
+### Learning a network of S&P500 stocks
+```{r plot_sp500_stocks_network, message=FALSE}
+options(warn=-1)
+library(xts)
+library(igraph)
+library(fingraph)
+library(fitHeavyTail)
+library(readr)
+set.seed(123)
+
+# load table w/ stocks and their sectors
+SP500 <- read_csv("examples/stocks/SP500-sectors.csv")
+
+# load stock prices into an xts table
+stock_prices <- readRDS("examples/stocks/stock-data-2014-2018.rds")
+colnames(stock_prices)
+
+# compute log-returns
+log_returns <- diff(log(stock_prices), na.pad = FALSE)
+
+# estimate a weighted, undirected graph (markov random field)
+graph_mrf <- learn_kcomp_heavytail_graph(scale(log_returns),
+                                         rho = 10,
+                                         k = 3,
+                                         heavy_type = "student",
+                                         nu = fit_mvt(scale(log_returns),
+                                                      nu="MLE-diag-resample")$nu,
+                                         verbose = FALSE)
+
+# map stock names and sectors
+stock_sectors <- c(SP500$GICS.Sector[SP500$Symbol %in% colnames(stock_prices)])
+stock_sectors_index <- as.numeric(as.factor(stock_sectors))
+
+# plot network
+net <- graph_from_adjacency_matrix(graph_mrf$adjacency,
+                                   mode = "undirected",
+                                   weighted = TRUE)
+la_kcomp <- layout_nicely(net)
+V(net)$label.cex = 1
+colors <- c("#FD7272", "#55E6C1", "#25CCF7")
+V(net)$color <- colors[stock_sectors_index]
+V(net)$type <- stock_sectors_index
+V(net)$cluster <- stock_sectors_index
+E(net)$color <- apply(as.data.frame(get.edgelist(net)), 1,
+                      function(x) ifelse(V(net)$cluster[x[1]] == V(net)$cluster[x[2]],
+                                        colors[V(net)$cluster[x[1]]], 'grey'))
+plot(net, vertex.label = colnames(stock_prices),
+     layout = la_kcomp,
+     vertex.size = 4.5,
+     vertex.label.family = "Helvetica",
+     vertex.label.dist = 1.25,
+     vertex.label.color = "black",
+     vertex.shape = "circle",
+     edge.width = 20*E(net)$weight,
+     edge.curved = 0.1)
+```
+
 ## Citation
 If you made use of this software please consider citing:
 
