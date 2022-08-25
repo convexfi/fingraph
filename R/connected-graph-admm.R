@@ -1,10 +1,28 @@
 library(spectralGraphTopology)
 
+#' @title Laplacian matrix of a connected graph with heavy-tailed data
+#'
+#' Computes the Laplacian matrix of a graph on the basis of an observed data matrix,
+#' where we assume the data to be Student-t distributed.
+#'
+#' @param X an n x p data matrix, where n is the number of observations and p is
+#'        the number of nodes in the graph
+#' @param w0 initial vector of graph weights. Either a vector of length p(p-1)/2 or
+#'        a string indicating the method to compute an initial value.
+#' @param d the nodes' degrees. Either a vector or a single value.
+#' @param rho ADMM hyperparameter.
+#' @param maxiter maximum number of iterations.
+#' @param reltol relative tolerance as a convergence criteria.
+#' @param verbose whether or not to show a progress bar during the iterations.
 #' @export
 #' @import spectralGraphTopology
-learn_connected_graph <- function(S, w0 = "naive", d = 1,
-                                  rho = 1, maxiter = 10000, reltol = 1e-5, verbose = TRUE,
-                                  record_objective = FALSE) {
+ learn_connected_graph <- function(S,
+                                   w0 = "naive",
+                                   d = 1,
+                                   rho = 1,
+                                   maxiter = 10000,
+                                   reltol = 1e-5,
+                                   verbose = TRUE) {
   # number of nodes
   p <- nrow(S)
   # w-initialization
@@ -47,7 +65,7 @@ learn_connected_graph <- function(S, w0 = "naive", d = 1,
     y <- y + rho * R2
     # update rho
     s <- rho * norm(Lstar(Theta - Thetai), "2")
-    r <- norm(R1, "F")# + norm(R2, "2")
+    r <- norm(R1, "F")
     if (r > mu * s)
       rho <- rho * tau
     else if (s > mu * r)
@@ -61,7 +79,10 @@ learn_connected_graph <- function(S, w0 = "naive", d = 1,
     Lw <- Lwi
     Theta <- Thetai
   }
-  results <- list(laplacian = L(wi), adjacency = A(wi), theta = Thetai, maxiter = i,
+  results <- list(laplacian = L(wi),
+                  adjacency = A(wi),
+                  theta = Thetai,
+                  maxiter = i,
                   convergence = has_converged)
   return(results)
 }
