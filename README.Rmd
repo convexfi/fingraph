@@ -83,7 +83,6 @@ plot(cfg, net, vertex.label = colnames(crypto_prices),
 
 ### Learning a network of S&P500 stocks
 ```{r plot_sp500_stocks_network, message=FALSE}
-options(warn=-1)
 library(xts)
 library(igraph)
 library(fingraph)
