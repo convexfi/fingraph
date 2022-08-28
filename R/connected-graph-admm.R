@@ -5,8 +5,7 @@ library(spectralGraphTopology)
 #' Computes the Laplacian matrix of a graph on the basis of an observed data matrix,
 #' where we assume the data to be Student-t distributed.
 #'
-#' @param X an n x p data matrix, where n is the number of observations and p is
-#'        the number of nodes in the graph
+#' @param S a p x p covariance matrix, where p is the number of nodes in the graph
 #' @param w0 initial vector of graph weights. Either a vector of length p(p-1)/2 or
 #'        a string indicating the method to compute an initial value.
 #' @param d the nodes' degrees. Either a vector or a single value.
