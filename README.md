@@ -1,5 +1,5 @@
 # fingraph
-[![codecov](https://codecov.io/gh/mirca/fingraph/branch/main/graph/badge.svg?token=OhreF1p2Yt)](https://codecov.io/gh/mirca/fingraph)
+[![codecov](https://codecov.io/gh/convexfi/fingraph/branch/main/graph/badge.svg?token=OhreF1p2Yt)](https://codecov.io/gh/convexfi/fingraph)
 
 
 This repo contains ADMM implementations to estimate weighted undirected graphs
