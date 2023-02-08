@@ -2,10 +2,10 @@
 % Please edit documentation in R/connected-graph-admm.R
 \name{learn_connected_graph}
 \alias{learn_connected_graph}
-\title{Laplacian matrix of a connected graph with heavy-tailed data
+\title{Laplacian matrix of a connected graph with Gaussian data
 
 Computes the Laplacian matrix of a graph on the basis of an observed data matrix,
-where we assume the data to be Student-t distributed.}
+where we assume the data to be Gaussian distributed.}
 \usage{
 learn_connected_graph(
   S,
@@ -34,8 +34,8 @@ a string indicating the method to compute an initial value.}
 \item{verbose}{whether or not to show a progress bar during the iterations.}
 }
 \description{
-Laplacian matrix of a connected graph with heavy-tailed data
+Laplacian matrix of a connected graph with Gaussian data
 
 Computes the Laplacian matrix of a graph on the basis of an observed data matrix,
-where we assume the data to be Student-t distributed.
+where we assume the data to be Gaussian distributed.
 }
