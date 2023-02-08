@@ -1,5 +1,5 @@
 Package: fingraph
-Title: Learning graphs for financial markets
+Title: Learning Graphs for Financial Markets
 Version: 0.1.0
 Date: 2022-02-06
 Description: Learning graphs for financial markets with ADMM-like algorithms.
@@ -10,21 +10,14 @@ Author: Ze Vinicius
 Maintainer: Ze Vinicius <jvmirca@gmail.com>
 URL: https://github.com/convexfi/fingraph/
 BugReports: https://github.com/mirca/fingraph/issues
-License: MIT | file LICENSE
+License: GPL-3 | file LICENSE
 Encoding: UTF-8
-LazyData: true
-Depends: spectralGraphTopology, devtools
-LinkingTo:
-    Rcpp,
-    RcppEigen
+Depends: spectralGraphTopology
 Imports:
-    Rcpp,
     MASS,
+    stats,
     progress,
-    igraph,
-    spectralGraphTopology,
-    mvtnorm,
+    mvtnorm
+Suggests:
     testthat
 RoxygenNote: 7.1.1
-Remotes:
-    convexfi/spectralGraphTopology
