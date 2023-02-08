@@ -1,12 +1,16 @@
 Package: fingraph
 Title: Learning graphs for financial markets
 Version: 0.1.0
+Date: 2022-02-06
 Description: Learning graphs for financial markets with ADMM-like algorithms.
+    This package contains implementations of the algorithms described in the paper:
+    Cardoso JVM, Ying J, and Palomar DP (2021). Learning graphs in heavy-tailed markets,
+    Advances in Neural Informations Processing Systems (NeurIPS).
 Author: Ze Vinicius
 Maintainer: Ze Vinicius <jvmirca@gmail.com>
-URL: https://github.com/mirca/fingraph/
+URL: https://github.com/convexfi/fingraph/
 BugReports: https://github.com/mirca/fingraph/issues
-License: GPL-3 | file LICENSE
+License: MIT | file LICENSE
 Encoding: UTF-8
 LazyData: true
 Depends: spectralGraphTopology, devtools
@@ -23,5 +27,4 @@ Imports:
     testthat
 RoxygenNote: 7.1.1
 Remotes:
-    mirca/spectralGraphTopology
-Suggests:
+    convexfi/spectralGraphTopology
