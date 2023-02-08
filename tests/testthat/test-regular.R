@@ -18,8 +18,8 @@ test_that("test learn_regular_heavytail_graph", {
   w <- c(1, 1, 1, 1, 1, 1) / 3
   Laplacian <- L(w)
   p <- ncol(Laplacian)
-  X <- MASS::mvrnorm(p * 100, rep(0, p), MASS::ginv(Laplacian))
-  res <- learn_regular_heavytail_graph(X, rho = 100, heavy_type = "student", nu = 1e3)
+  X <- MASS::mvrnorm(p * 1000, rep(0, p), MASS::ginv(Laplacian))
+  res <- learn_regular_heavytail_graph(X, rho = 100, heavy_type = "student", nu = 1e4)
   laplacian <- res$laplacian
   expect_true(res$convergence)
   expect_true(res$maxiter > 5)
