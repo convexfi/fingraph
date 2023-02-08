@@ -40,7 +40,7 @@ learn_regular_heavytail_graph <- function(X,
   for (i in 1:n)
     LstarSq[[i]] <- Lstar(X[i, ] %*% t(X[i, ])) / (n-1)
   # w-initialization
-  w <- spectralGraphTopology:::w_init(w0, MASS::ginv(cor(X)))
+  w <- spectralGraphTopology:::w_init(w0, MASS::ginv(stats::cor(X)))
   A0 <- A(w)
   A0 <- A0 / rowSums(A0)
   w <- spectralGraphTopology:::Ainv(A0)

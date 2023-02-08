@@ -17,12 +17,15 @@ library(spectralGraphTopology)
 #' @param beta hyperparameter that controls the regularization to obtain a
 #'        k-component graph
 #' @param update_beta whether to update beta during the optimization.
+#' @param early_stopping whether to stop the iterations as soon as the rank
+#'        constraint is satisfied.
 #' @param d the nodes' degrees. Either a vector or a single value.
 #' @param rho ADMM hyperparameter.
 #' @param update_rho whether or not to update rho during the optimization.
 #' @param maxiter maximum number of iterations.
 #' @param reltol relative tolerance as a convergence criteria.
-#' @param verbose whether or not to show a progress bar during the iterations.
+#' @param verbose whether to show a progress bar during the iterations.
+#' @param record_objective whether to record the objective function per iteration.
 #' @export
 #' @import spectralGraphTopology
 learn_kcomp_heavytail_graph <- function(X,
@@ -49,7 +52,7 @@ learn_kcomp_heavytail_graph <- function(X,
   for (i in 1:n)
     LstarSq[[i]] <- Lstar(X[i, ] %*% t(X[i, ])) / n
   # w-initialization
-  w <- spectralGraphTopology:::w_init(w0, MASS::ginv(cor(X)))
+  w <- spectralGraphTopology:::w_init(w0, MASS::ginv(stats::cor(X)))
   A0 <- A(w)
   A0 <- A0 / rowSums(A0)
   w <- spectralGraphTopology:::Ainv(A0)
@@ -143,8 +146,12 @@ learn_kcomp_heavytail_graph <- function(X,
     Lw <- Lwi
     Theta <- Thetai
   }
-  results <- list(laplacian = L(wi), adjacency = A(wi), theta = Thetai, maxiter = i,
-                  convergence = has_converged, beta_seq = beta_seq,
+  results <- list(laplacian = L(wi),
+                  adjacency = A(wi),
+                  theta = Thetai,
+                  maxiter = i,
+                  convergence = has_converged,
+                  beta_seq = beta_seq,
                   primal_lap_residual = primal_lap_residual,
                   primal_deg_residual = primal_deg_residual,
                   dual_residual = dual_residual,
