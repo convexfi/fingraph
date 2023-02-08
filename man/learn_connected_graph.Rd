@@ -18,6 +18,8 @@ learn_connected_graph(
 )
 }
 \arguments{
+\item{S}{a p x p covariance matrix, where p is the number of nodes in the graph}
+
 \item{w0}{initial vector of graph weights. Either a vector of length p(p-1)/2 or
 a string indicating the method to compute an initial value.}
 
@@ -30,9 +32,6 @@ a string indicating the method to compute an initial value.}
 \item{reltol}{relative tolerance as a convergence criteria.}
 
 \item{verbose}{whether or not to show a progress bar during the iterations.}
-
-\item{X}{an n x p data matrix, where n is the number of observations and p is
-the number of nodes in the graph}
 }
 \description{
 Laplacian matrix of a connected graph with heavy-tailed data

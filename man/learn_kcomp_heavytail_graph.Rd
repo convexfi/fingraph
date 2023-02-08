@@ -47,6 +47,9 @@ k-component graph}
 
 \item{update_beta}{whether to update beta during the optimization.}
 
+\item{early_stopping}{whether to stop the iterations as soon as the rank
+constraint is satisfied.}
+
 \item{rho}{ADMM hyperparameter.}
 
 \item{update_rho}{whether or not to update rho during the optimization.}
@@ -55,7 +58,9 @@ k-component graph}
 
 \item{reltol}{relative tolerance as a convergence criteria.}
 
-\item{verbose}{whether or not to show a progress bar during the iterations.}
+\item{verbose}{whether to show a progress bar during the iterations.}
+
+\item{record_objective}{whether to record the objective function per iteration.}
 }
 \description{
 Laplacian matrix of a k-component graph with heavy-tailed data
