@@ -1,0 +1,17 @@
+^.*\.Rproj$
+^.*\.gz$
+^\.Rproj\.user$
+^cran-comments\.md$
+^README\.Rmd$
+^README\.html$
+^README_cache$
+^README_files$
+^R_buildignore$
+^examples$
+^LICENSE$
+^.compileAttributes\.R$
+^.roxygenize\.R$
+^.git$
+^.gitignore$
+^.github$
+^Makefile$
