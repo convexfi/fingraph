@@ -9,8 +9,8 @@ Description: Learning graphs for financial markets with ADMM-like algorithms.
 Author: Ze Vinicius
 Maintainer: Ze Vinicius <jvmirca@gmail.com>
 URL: https://github.com/convexfi/fingraph/
-BugReports: https://github.com/mirca/fingraph/issues
-License: MIT + file LICENSE
+BugReports: https://github.com/convexfi/fingraph/issues
+License: GPL-3
 Encoding: UTF-8
 Depends: spectralGraphTopology
 Imports:
