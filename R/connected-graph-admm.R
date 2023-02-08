@@ -1,9 +1,9 @@
 library(spectralGraphTopology)
 
-#' @title Laplacian matrix of a connected graph with heavy-tailed data
+#' @title Laplacian matrix of a connected graph with Gaussian data
 #'
 #' Computes the Laplacian matrix of a graph on the basis of an observed data matrix,
-#' where we assume the data to be Student-t distributed.
+#' where we assume the data to be Gaussian distributed.
 #'
 #' @param S a p x p covariance matrix, where p is the number of nodes in the graph
 #' @param w0 initial vector of graph weights. Either a vector of length p(p-1)/2 or
