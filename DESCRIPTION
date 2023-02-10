@@ -2,7 +2,7 @@ Package: fingraph
 Title: Learning Graphs for Financial Markets
 Version: 0.1.0
 Date: 2023-02-02
-Description: Learning graphs for financial markets with ADMM-like algorithms.
+Description: Learning graphs for financial markets with optimization algorithms.
     This package contains implementations of the algorithms described in the paper:
     Cardoso JVM, Ying J, and Palomar DP (2021). Learning graphs in heavy-tailed markets,
     Advances in Neural Informations Processing Systems (NeurIPS).

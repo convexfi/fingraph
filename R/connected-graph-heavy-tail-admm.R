@@ -14,13 +14,24 @@ library(spectralGraphTopology)
 #' @param w0 initial vector of graph weights. Either a vector of length p(p-1)/2 or
 #'        a string indicating the method to compute an initial value.
 #' @param d the nodes' degrees. Either a vector or a single value.
-#' @param rho ADMM hyperparameter.
+#' @param rho constraint relaxation hyperparameter.
 #' @param update_rho whether or not to update rho during the optimization.
 #' @param maxiter maximum number of iterations.
 #' @param reltol relative tolerance as a convergence criteria.
 #' @param verbose whether or not to show a progress bar during the iterations.
-#' @export
+#' @return A list containing possibly the following elements:
+#' \item{\code{laplacian}}{estimated Laplacian matrix}
+#' \item{\code{adjacency}}{estimated adjacency matrix}
+#' \item{\code{theta}}{estimated Laplacian matrix slack variable}
+#' \item{\code{maxiter}}{number of iterations taken to reach convergence}
+#' \item{\code{convergence}}{boolean flag to indicate whether or not the optimization conv    erged}
+#' \item{\code{primal_lap_residual}}{primal residual for the Laplacian matrix per iteration}
+#' \item{\code{primal_deg_residual}}{primal residual for the degree vector per iteration}
+#' \item{\code{dual_residual}}{dual residual per iteration}
+#' \item{\code{lagrangian}}{Lagrangian value per iteration}
+#' \item{\code{elapsed_time}}{Time taken to reach convergence}
 #' @import spectralGraphTopology
+#' @export
 learn_regular_heavytail_graph <- function(X,
                                           heavy_type = "gaussian",
                                           nu = NULL,

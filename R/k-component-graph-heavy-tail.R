@@ -20,14 +20,26 @@ library(spectralGraphTopology)
 #' @param early_stopping whether to stop the iterations as soon as the rank
 #'        constraint is satisfied.
 #' @param d the nodes' degrees. Either a vector or a single value.
-#' @param rho ADMM hyperparameter.
+#' @param rho constraint relaxation hyperparameter.
 #' @param update_rho whether or not to update rho during the optimization.
 #' @param maxiter maximum number of iterations.
 #' @param reltol relative tolerance as a convergence criteria.
 #' @param verbose whether to show a progress bar during the iterations.
 #' @param record_objective whether to record the objective function per iteration.
-#' @export
+#' @return A list containing possibly the following elements:
+#' \item{\code{laplacian}}{estimated Laplacian matrix}
+#' \item{\code{adjacency}}{estimated adjacency matrix}
+#' \item{\code{theta}}{estimated Laplacian matrix slack variable}
+#' \item{\code{maxiter}}{number of iterations taken to reach convergence}
+#' \item{\code{convergence}}{boolean flag to indicate whether or not the optimization conv        erged}
+#' \item{\code{beta_seq}}{sequence of values taken by the hyperparameter beta until convergence}
+#' \item{\code{primal_lap_residual}}{primal residual for the Laplacian matrix per iteratio    n}
+#' \item{\code{primal_deg_residual}}{primal residual for the degree vector per iteration}
+#' \item{\code{dual_residual}}{dual residual per iteration}
+#' \item{\code{lagrangian}}{Lagrangian value per iteration}
+#' \item{\code{elapsed_time}}{Time taken to reach convergence}
 #' @import spectralGraphTopology
+#' @export
 learn_kcomp_heavytail_graph <- function(X,
                                         k = 1,
                                         heavy_type = "gaussian",
