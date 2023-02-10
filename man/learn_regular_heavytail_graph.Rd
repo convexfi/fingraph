@@ -35,7 +35,7 @@ a string indicating the method to compute an initial value.}
 
 \item{d}{the nodes' degrees. Either a vector or a single value.}
 
-\item{rho}{ADMM hyperparameter.}
+\item{rho}{constraint relaxation hyperparameter.}
 
 \item{update_rho}{whether or not to update rho during the optimization.}
 
@@ -44,6 +44,19 @@ a string indicating the method to compute an initial value.}
 \item{reltol}{relative tolerance as a convergence criteria.}
 
 \item{verbose}{whether or not to show a progress bar during the iterations.}
+}
+\value{
+A list containing possibly the following elements:
+\item{\code{laplacian}}{estimated Laplacian matrix}
+\item{\code{adjacency}}{estimated adjacency matrix}
+\item{\code{theta}}{estimated Laplacian matrix slack variable}
+\item{\code{maxiter}}{number of iterations taken to reach convergence}
+\item{\code{convergence}}{boolean flag to indicate whether or not the optimization conv    erged}
+\item{\code{primal_lap_residual}}{primal residual for the Laplacian matrix per iteration}
+\item{\code{primal_deg_residual}}{primal residual for the degree vector per iteration}
+\item{\code{dual_residual}}{dual residual per iteration}
+\item{\code{lagrangian}}{Lagrangian value per iteration}
+\item{\code{elapsed_time}}{Time taken to reach convergence}
 }
 \description{
 Laplacian matrix of a connected graph with heavy-tailed data

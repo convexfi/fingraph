@@ -25,13 +25,21 @@ a string indicating the method to compute an initial value.}
 
 \item{d}{the nodes' degrees. Either a vector or a single value.}
 
-\item{rho}{ADMM hyperparameter.}
+\item{rho}{constraint relaxation hyperparameter.}
 
 \item{maxiter}{maximum number of iterations.}
 
 \item{reltol}{relative tolerance as a convergence criteria.}
 
 \item{verbose}{whether or not to show a progress bar during the iterations.}
+}
+\value{
+A list containing possibly the following elements:
+\item{\code{laplacian}}{estimated Laplacian matrix}
+\item{\code{adjacency}}{estimated adjacency matrix}
+\item{\code{theta}}{estimated Laplacian matrix slack variable}
+\item{\code{maxiter}}{number of iterations taken to reach convergence}
+\item{\code{convergence}}{boolean flag to indicate whether or not the optimization converged}
 }
 \description{
 Laplacian matrix of a connected graph with Gaussian data
