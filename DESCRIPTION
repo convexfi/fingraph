@@ -4,10 +4,11 @@ Version: 0.1.0
 Date: 2023-02-02
 Description: Learning graphs for financial markets with optimization algorithms.
     This package contains implementations of the algorithms described in the paper:
-    Cardoso JVM, Ying J, and Palomar DP (2021). Learning graphs in heavy-tailed markets,
-    Advances in Neural Informations Processing Systems (NeurIPS).
-Author: Ze Vinicius
-Maintainer: Ze Vinicius <jvmirca@gmail.com>
+    Cardoso JVM, Ying J, and Palomar DP (2021) <https://papers.nips.cc/paper/2021/hash/a64a034c3cb8eac64eb46ea474902797-Abstract.html>
+    "Learning graphs in heavy-tailed markets", Advances in Neural Informations Processing Systems (NeurIPS).
+Authors@R: c(
+  person("Ze", "Vinicius", role = c("cre", "aut"), email = "jvmirca@gmail.com")
+  )
 URL: https://github.com/convexfi/fingraph/
 BugReports: https://github.com/convexfi/fingraph/issues
 License: GPL-3
