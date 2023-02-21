@@ -371,10 +371,10 @@ pre code {
 <p>This repo contains ADMM implementations to estimate weighted undirected graphs (Markov random fields) under Student-t assumptions with applications to financial markets.</p>
 <div id="installation" class="section level2">
 <h2>Installation</h2>
-<p><strong>fingraph</strong> depends on the development version of <strong>spectralGraphTopology</strong>.</p>
-<p>You can install the development version from GitHub:</p>
-<pre class="r"><code>&gt; devtools::install_github(&quot;mirca/spectralGraphTopology&quot;)
-&gt; devtools::install_github(&quot;mirca/fingraph&quot;)</code></pre>
+<p><strong>fingraph</strong> depends on the development version of <strong>spectralGraphTopology</strong>, which can be installed as:</p>
+<pre class="r"><code>&gt; devtools::install_github(&quot;convexfi/spectralGraphTopology&quot;)</code></pre>
+<p>The stable version of <strong>fingraph</strong> can be installed directly from CRAN:</p>
+<pre class="r"><code>&gt; install.packages(&quot;fingraph&quot;)</code></pre>
 <div id="microsoft-windows" class="section level4">
 <h4>Microsoft Windows</h4>
 <p>On MS Windows environments, make sure to install the most recent version of <code>Rtools</code>.</p>
@@ -504,7 +504,7 @@ plot(net, vertex.label = colnames(stock_prices),
 <h2>Citation</h2>
 <p>If you made use of this software please consider citing:</p>
 <ul>
-<li><a href="https://mirca.github.io">J. V. de M. Cardoso</a>, <a href="https://github.com/jxying">J. Ying</a>, <a href="https://www.danielppalomar.com">D. P. Palomar</a> (2021). <a href="https://palomar.home.ece.ust.hk/papers/2021/CardosoYingPalomar-NeurIPS2021.pdf">Graphical Models in Heavy-Tailed Markets</a>. <a href="https://neurips.cc/Conferences/2021">Advances in Neural Information Processing Systems</a> (NeurIPS’21).</li>
+<li><a href="https://mirca.github.io">Cardoso JVM</a>, <a href="https://github.com/jxying">Ying J</a>, <a href="https://www.danielppalomar.com">Palomar DP</a> (2021). <a href="https://palomar.home.ece.ust.hk/papers/2021/CardosoYingPalomar-NeurIPS2021.pdf">Graphical Models in Heavy-Tailed Markets</a>. <a href="https://neurips.cc/Conferences/2021">Advances in Neural Information Processing Systems</a> (NeurIPS’21).</li>
 </ul>
 </div>
 <div id="links" class="section level2">
@@ -513,6 +513,7 @@ plot(net, vertex.label = colnames(stock_prices),
 <li><a href="https://palomar.home.ece.ust.hk/papers/2021/CardosoYingPalomar-NeurIPS2021-slides.pdf">NeurIPS’21 Slides</a></li>
 <li><a href="https://palomar.home.ece.ust.hk/papers/2021/CardosoYingPalomar-NeurIPS2021-poster.png">NeurIPS’21 Poster</a></li>
 <li><a href="https://palomar.home.ece.ust.hk/papers/2021/CardosoYingPalomar-NeurIPS2021-supplemental.pdf">NeurIPS’21 Supplementary Material</a></li>
+<li><a href="https://cran.r-project.org/package=fingraph">CRAN Package</a></li>
 </ul>
 </div>
 </div>

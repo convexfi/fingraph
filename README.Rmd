@@ -29,12 +29,15 @@ markets.
 
 ## Installation
 
-**fingraph** depends on the development version of **spectralGraphTopology**.
-
-You can install the development version from GitHub:
+**fingraph** depends on the development version of **spectralGraphTopology**,
+which can be installed as:
 ```{r, eval = FALSE}
-> devtools::install_github("mirca/spectralGraphTopology")
-> devtools::install_github("mirca/fingraph")
+> devtools::install_github("convexfi/spectralGraphTopology")
+```
+
+The stable version of **fingraph** can be installed directly from CRAN:
+```{r, eval = FALSE}
+> install.packages("fingraph")
 ```
 
 #### Microsoft Windows
@@ -145,8 +148,8 @@ plot(net, vertex.label = colnames(stock_prices),
 ## Citation
 If you made use of this software please consider citing:
 
--   [J. V. de M. Cardoso](https://mirca.github.io), [J. Ying](https://github.com/jxying),
-    [D. P. Palomar](https://www.danielppalomar.com) (2021).
+-   [Cardoso JVM](https://mirca.github.io), [Ying J](https://github.com/jxying),
+    [Palomar DP](https://www.danielppalomar.com) (2021).
     [Graphical Models in Heavy-Tailed Markets](https://palomar.home.ece.ust.hk/papers/2021/CardosoYingPalomar-NeurIPS2021.pdf).
     [Advances in Neural Information Processing Systems](https://neurips.cc/Conferences/2021) (NeurIPS’21).
 
@@ -154,3 +157,5 @@ If you made use of this software please consider citing:
 - [NeurIPS’21 Slides](https://palomar.home.ece.ust.hk/papers/2021/CardosoYingPalomar-NeurIPS2021-slides.pdf)
 - [NeurIPS'21 Poster](https://palomar.home.ece.ust.hk/papers/2021/CardosoYingPalomar-NeurIPS2021-poster.png)
 - [NeurIPS'21 Supplementary Material](https://palomar.home.ece.ust.hk/papers/2021/CardosoYingPalomar-NeurIPS2021-supplemental.pdf)
+- [CRAN Package](https://cran.r-project.org/package=fingraph)
+
