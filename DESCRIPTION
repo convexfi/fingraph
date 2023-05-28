@@ -7,7 +7,8 @@ Description: Learning graphs for financial markets with optimization algorithms.
     Cardoso JVM, Ying J, and Palomar DP (2021) <https://papers.nips.cc/paper/2021/hash/a64a034c3cb8eac64eb46ea474902797-Abstract.html>
     "Learning graphs in heavy-tailed markets", Advances in Neural Informations Processing Systems (NeurIPS).
 Authors@R: c(
-  person("Ze", "Vinicius", role = c("cre", "aut"), email = "jvmirca@gmail.com")
+  person("Ze", "Vinicius", role = c("cre", "aut"), email = "jvmirca@gmail.com"),
+  person("Daniel", "Palomar", role = c("cre", "aut"), email = "daniel.p.palomar@gmail.com"),
   )
 URL: https://github.com/convexfi/fingraph/
 BugReports: https://github.com/convexfi/fingraph/issues
