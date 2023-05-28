@@ -38,21 +38,22 @@ set.seed(123)
 # load crypto prices into an xts table
 crypto_prices <- readRDS("examples/crypto/crypto-prices.rds")
 colnames(crypto_prices)
-#>  [1] "BTC"   "ETH"   "XRP"   "USDT"  "LTC"   "BCH"   "BNB"   "XLM"   "EOS"  
-#> [10] "XMR"   "XEM"   "NEO"   "DASH"  "WAVES" "MIOTA" "ZEC"   "ETC"   "GNO"  
-#> [19] "OMG"   "DOGE"  "BAT"   "DCR"   "DGB"   "QTUM"  "REP"   "LSK"   "SC"   
-#> [28] "NANO"  "ANT"   "SNT"   "ZEN"   "MAID"  "GNT"   "XVG"   "BNT"   "MONA" 
-#> [37] "RLC"   "STORJ" "STEEM" "KMD"   "BTS"
+#>  [1] "BTC"      "ETH"      "USDT"     "BNB"      "USDC"     "XRP"     
+#>  [7] "ADA"      "HEX"      "DOGE"     "SOL"      "MATIC"    "DOT"     
+#> [13] "TRX"      "LTC"      "BUSD"     "SHIB"     "AVAX"     "DAI"     
+#> [19] "LEO"      "LINK"     "ATOM"     "UNI7083"  "XMR"      "OKB"     
+#> [25] "ETC"      "TON11419" "XLM"      "BCH"      "ICP"      "CNX"     
+#> [31] "TUSD"     "FIL"      "HBAR"     "CRO"      "LDO"      "NEAR"    
+#> [37] "VET"      "QNT"      "ALGO"     "USDP"     "FTM"      "GRT6719"
 
 # compute log-returns
 log_returns <- diff(log(crypto_prices), na.pad = FALSE)
 
 # estimate a weighted, undirected graph (markov random field)
 graph_mrf <- learn_kcomp_heavytail_graph(scale(log_returns),
-                                         k = 7,
+                                         k = 8,
                                          heavy_type = "student",
-                                         nu = fit_mvt(scale(log_returns),
-                                                      nu="MLE-diag-resample")$nu,
+                                         nu = fit_mvt(scale(log_returns))$nu,
                                          verbose = FALSE)
 
 # plot network
@@ -113,8 +114,7 @@ graph_mrf <- learn_kcomp_heavytail_graph(scale(log_returns),
                                          rho = 10,
                                          k = 3,
                                          heavy_type = "student",
-                                         nu = fit_mvt(scale(log_returns),
-                                                      nu="MLE-diag-resample")$nu,
+                                         nu = fit_mvt(scale(log_returns))$nu,
                                          verbose = FALSE)
 #> Warning in tclass.xts(x): index does not have a 'tclass' attribute
 
