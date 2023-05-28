@@ -155,10 +155,11 @@ If you made use of this software please consider citing:
 
 -   [Cardoso JVM](https://mirca.github.io), [Ying J](https://github.com/jxying),
     [Palomar DP](https://www.danielppalomar.com) (2021).
-    [Graphical Models in Heavy-Tailed Markets](https://palomar.home.ece.ust.hk/papers/2021/CardosoYingPalomar-NeurIPS2021.pdf).
+    [Graphical Models in Heavy-Tailed Markets](https://papers.nips.cc/paper/2021/hash/a64a034c3cb8eac64eb46ea474902797-Abstract.html).
     [Advances in Neural Information Processing Systems](https://neurips.cc/Conferences/2021) (NeurIPS’21).
 
 ## Links
+- [RFinance'23 Slides](https://github.com/mirca/rfinance-talk/blob/main/rfinance.pdf)
 - [NeurIPS’21 Slides](https://palomar.home.ece.ust.hk/papers/2021/CardosoYingPalomar-NeurIPS2021-slides.pdf)
 - [NeurIPS'21 Poster](https://palomar.home.ece.ust.hk/papers/2021/CardosoYingPalomar-NeurIPS2021-poster.png)
 - [NeurIPS'21 Supplementary Material](https://palomar.home.ece.ust.hk/papers/2021/CardosoYingPalomar-NeurIPS2021-supplemental.pdf)
